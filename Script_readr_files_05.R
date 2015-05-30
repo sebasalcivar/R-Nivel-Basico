@@ -92,23 +92,22 @@ library(readxl)
 ls("package:readxl")
 # lista de las hojas del libro "data_read.xlsx"
 excel_sheets(path = file.path(wd1, "data_read.xlsx"))
-
+setwd(wd1)
 data_xlsx <- read_excel("data_read.xlsx",sheet = "datos",col_names = TRUE, na="")
 str(data_xlsx)
-
-
 
 # archivos spss formato .sav
 # install.packages("foreign", dependencies = TRUE)
 library(foreign)
 ls("package:foreign")
-system.time(data_sav1 <- read.spss("data_read.sav", use.value.labels = TRUE, 
-                      to.data.frame = TRUE))
+data_sav1 <- read.spss("data_read.sav", use.value.labels = TRUE, 
+                      to.data.frame = TRUE)
 str(data_sav1)
 
 
 # install.packages("haven", dependencies = TRUE)
 # spss: read_spss(), sas: read_sas(), stata: read_dta()
+
 library(haven)
 ls("package:haven")
 data_sav2 <- read_spss("data_read.sav")
@@ -197,7 +196,7 @@ length(edad1)
 edad1 <- edad[1:50]
 length(edad1)
 # eliminar el primer elemento de edad y asignar a edad1
-edad1 <- edad[-1]
+edad1 <- edad[-5]
 length(edad)
 length(edad1)
 # eliminar los elementos 1, 25, 51 de edad y asignar a edad1
@@ -205,7 +204,7 @@ edad1 <- edad[-c(1,25,51)]
 length(edad)
 length(edad1)
 # eliminar los primeros 1000 elementos de edad y asignar a edad1
-edad1 <- edad[-c(1,25,51)]
+edad1 <- edad[-(1:1000)]
 length(edad)
 length(edad1)
 
@@ -242,7 +241,7 @@ edad1[edad1>65] <- 65
 max(edad1)
 max(edad)
 View(edad1)
-
+min(edad1)
 # si la edad es inferior a 18 setear 18 por defecto
 edad1 <- edad
 edad1[edad1<18] <- 18
@@ -415,7 +414,7 @@ names(data_txt)
 edad <- data_txt[,"Edad"]
 # histograma
 hist(edad)
-hist(edad,breaks = 50)
+hist(edad,breaks = 200)
 hist(edad,breaks = 50, xlab = "Edad", ylab="Frecuencia", main="Histograma de Edad")
 hist(edad,breaks = 50, xlab = "Edad", ylab="Frecuencia", main="Histograma de Edad",
      col="steelblue", border="gray60")
@@ -464,5 +463,5 @@ barplot(table(tipviv), xlab = "Vivienda", ylab="Frecuencia", main="Diagrama de b
 # Realice los graficos anteriors para las variables
 # Antiguedad, Cuota_mensual, Estado_civil, eliga los colores y titulos a conveniencia
 
-
+setwd(wd0)
 
