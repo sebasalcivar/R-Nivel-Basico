@@ -5,6 +5,9 @@
 ###-- Mayo, 2015 ---------------------------------###
 ###-----------------------------------------------###
 
+
+##sasdasdsadasdasdsd
+
 ##--------- 1. working directory wd
 # setear wd
 wd0 <- "C:/Users/Toshiba/Desktop/readr_files_05"
@@ -463,5 +466,5 @@ barplot(table(tipviv), xlab = "Vivienda", ylab="Frecuencia", main="Diagrama de b
 # Realice los graficos anteriors para las variables
 # Antiguedad, Cuota_mensual, Estado_civil, eliga los colores y titulos a conveniencia
 
-setwd(wd0)
+
 
