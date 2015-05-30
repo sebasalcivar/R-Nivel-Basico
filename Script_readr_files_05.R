@@ -8,6 +8,7 @@
 ##--------- 1. working directory wd
 # setear wd
 wd0 <- "C:/Users/Toshiba/Desktop/readr_files_05"
+wd0<-getwd()
 setwd(dir = wd0)
 
 # obtencion de wd
@@ -17,27 +18,34 @@ getwd()
 list.files()
 list.files(pattern = ".Rmd")
 
-wd1 <- "C:/Users/Toshiba/Desktop/readr_files_05/read_data"
+wd1 <- "/home/sebastian/repositorios R/R-Nivel-Basico/read_data"
 setwd(dir = wd1)
 list.files()
 list.files(pattern = ".txt")
+
+
 
 files <- list.files()
 files
 grep(files, pattern = ".txt")
 files[grep(files,pattern = ".txt")]
+files[c(3,7)]
 
 # crear nuevos directorios
+
 setwd(dir = wd0)
-file.exists("ssl")
-dir.create("ssl")
+file.exists("alumnos_basic.pdf")
+dir.create("ssl.pdf")
 
 ##--------- 2. read files
+
 setwd(wd1)
 list.files()
+
 # read.table function
 # archivo formato txt
-data_txt1 <- read.table(file = "data_read.txt",sep = "\t", dec = ",", header = TRUE)
+
+data_txt1 <- read.table(file = "data_read.txt" , sep = "\t", dec = "," , header = TRUE)
 str(data_txt1)
 View(data_txt1)
 
@@ -50,8 +58,9 @@ nrow(data_txt1)
 summary(data_txt1)
 
 # Variables categóricas como character
+
 data_txt2 <- read.table(file = "data_read.txt",sep = "\t", dec = ",", 
-                       header = TRUE, stringsAsFactors = FALSE)
+                             header = TRUE, stringsAsFactors = FALSE)
 str(data_txt2)
 
 
@@ -72,12 +81,13 @@ summary(data_csv)
 data_csv1 <- read.csv(file = "data_read.csv")
 str(data_csv1)
 
-data_csv2 <- read.csv(file = "data_read.csv",sep = ",", dec = ".", header = TRUE)
+data_csv2 <- read.csv2(file = "data_read.csv",sep = ",", dec = ".", header = TRUE)
 str(data_csv2)
 
 
 # archivo formato xlsx
 # install.packages("readxl", dependencies = TRUE)
+
 library(readxl)
 ls("package:readxl")
 # lista de las hojas del libro "data_read.xlsx"
